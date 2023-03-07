@@ -1,0 +1,486 @@
+local Load_Key = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/Key"))()
+local key
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+current_key = nil
+
+if current_key == "nil" then
+    current_key = nil
+end
+
+if current_key ~= nil then
+if isfile("!KeyPurpleCat.txt") and readfile("!KeyPurpleCat.txt") == current_key then
+    
+key = Load_Key(nil)
+
+passkey = true
+
+else
+key = Load_Key(current_key , function()
+    writefile("!KeyPurpleCat.txt" , current_key)
+    
+
+    passkey = true
+end)
+end
+else
+    key = Load_Key(nil)
+    key.Text = "Loading . . ."
+    passkey = true
+end
+
+wait(.2)
+
+repeat wait() until passkey == true
+    
+    key.Text = "Key is Correct!"
+    
+    wait(1)
+    
+    game.CoreGui:FindFirstChild("PurpleCat"):Destroy()
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/GUI56"))()
+local CenterHubNo1 = library:CreateWindow(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,Enum.KeyCode.RightControl)
+local Tab = CenterHubNo1:CreateTab("Main")
+local Sector1 = Tab:CreateSector("Main","left")
+Sector1:AddLabel("Auto Farm")
+Sector1:AddToggle("Kill Aura Melee",false,function(t)
+   _G.KillAuraMelee = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.KillAuraMelee then
+pcall(function()
+workspace.Karacter00.Combat.Combo.C0:FireServer(workspace.Karacter00.RightHand) 
+workspace.Karacter00.Combat.Combo.C1:FireServer(workspace.Karacter00.LeftHand)
+end)
+end
+end
+end)
+end) Sector1:AddToggle("Give Common Fruit",false,function(t)
+   _G.GiveCommonFruit = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveCommonFruit then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Common")
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Give Fruit Uncommon",false,function(t)
+   _G.GiveFruitUncommon = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveFruitUncommon then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Uncommon")
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Give Fruit Epic",false,function(t)
+   _G.AutoChestGold = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveFruitEpic then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Epic")
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Give Fruit Legendary",false,function(t)
+   _G.GiveFruitLegendary = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveFruitLegendary then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Legendary")
+end)
+end
+end
+end)
+end) local Sector2 = Tab:CreateSector("Misc","Right")
+ Sector2:AddLabel("Spam Skills") Sector2:AddToggle("Spam Skill Quake",false,function(t)
+   _G.SpamSkillQuake = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SpamSkillQuake then
+pcall(function()
+workspace.Karacter00.Quake.Smash.Fire:FireServer() 
+workspace.Karacter00.Quake.ShockWave.Fire:FireServer() 
+workspace.Karacter00.Quake.Wave.Fire:FireServer()
+end)
+end
+end
+end)
+end)
+Sector2:AddToggle("Spam Skill Love",false,function(t)
+   _G.SpamSkillLove = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SpamSkillLove then
+pcall(function()
+game:GetService("Players").LocalPlayer.Backpack.Love.Skill2.RemoteEvent:FireServer()
+end)
+end
+end
+end)
+end) Sector2:AddToggle("Spam Skill Paw",false,function(t)
+   _G.SpamSkillPaw = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SpamSkillPaw then
+pcall(function()
+workspace.Karacter00.Paw.PawNuke.Fire:FireServer(game:GetService("Players").LocalPlayer) 
+workspace.Karacter00.Paw.Torture.Fire:FireServer(game:GetService("Players").LocalPlayer)
+end)
+end
+end
+end)
+end) Sector2:AddButton("Haki Free",function()
+  print("")game:GetService("Lighting").HakiOn:FireServer()
+end) Sector2:AddButton("Haki Off",function()
+  print("")game:GetService("Lighting").HakiOff:FireServer()
+end) local Sector3 = Tab:CreateSector("Auto Stats","left")
+ Sector3:AddLabel("Auto Stats") Sector3:AddToggle("Auto Stats Sword",false,function(t)
+   _G.AutoStatsSword = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsSword then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Sword")
+end)
+end
+end
+end)
+end)
+Sector3:AddToggle("Auto Stats Fruit",false,function(t)
+   _G.AutoStatsFruit = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsFruit then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Special")
+end)
+end
+end
+end)
+end)
+Sector3:AddToggle("Auto Stats Defense",false,function(t)
+   _G.AutoStatsDefense = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsDefense then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Defense")
+end)
+end
+end
+end)
+end) Sector3:AddToggle("Auto Stats Melee",false,function(t)
+   _G.AutoStatsMelee = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsMelee then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Special")
+end)
+end
+end
+end)
+end) Sector2:AddSeperator("Op Script")
+local config = library:ConfigSystem("MapName")
+config:Load()
+  while wait(.5) do
+    pcall(function()
+        local config = library:ConfigSystem("MapName")
+        config:Save()
+    end)
+end
+local Load_Key = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/Key"))()
+local key
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+current_key = nil
+
+if current_key == "nil" then
+    current_key = nil
+end
+
+if current_key ~= nil then
+if isfile("!KeyPurpleCat.txt") and readfile("!KeyPurpleCat.txt") == current_key then
+    
+key = Load_Key(nil)
+
+passkey = true
+
+else
+key = Load_Key(current_key , function()
+    writefile("!KeyPurpleCat.txt" , current_key)
+    
+
+    passkey = true
+end)
+end
+else
+    key = Load_Key(nil)
+    key.Text = "Loading . . ."
+    passkey = true
+end
+
+wait(.2)
+
+repeat wait() until passkey == true
+    
+    key.Text = "Key is Correct!"
+    
+    wait(1)
+    
+    game.CoreGui:FindFirstChild("PurpleCat"):Destroy()
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/GUI56"))()
+local CenterHubNo1 = library:CreateWindow(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,Enum.KeyCode.RightControl)
+local Tab = CenterHubNo1:CreateTab("Main")
+local Sector1 = Tab:CreateSector("Main","left")
+Sector1:AddLabel("Auto Farm")
+Sector1:AddToggle("Kill Aura Melee",false,function(t)
+   _G.KillAuraMelee = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.KillAuraMelee then
+pcall(function()
+workspace.Karacter00.Combat.Combo.C0:FireServer(workspace.Karacter00.RightHand) 
+workspace.Karacter00.Combat.Combo.C1:FireServer(workspace.Karacter00.LeftHand)
+end)
+end
+end
+end)
+end) Sector1:AddToggle("Give Common Fruit",false,function(t)
+   _G.GiveCommonFruit = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveCommonFruit then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Common")
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Give Fruit Uncommon",false,function(t)
+   _G.GiveFruitUncommon = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveFruitUncommon then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Uncommon")
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Give Fruit Epic",false,function(t)
+   _G.AutoChestGold = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveFruitEpic then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Epic")
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Give Fruit Legendary",false,function(t)
+   _G.GiveFruitLegendary = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GiveFruitLegendary then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.SpinGui.LOL.Spin.Spin.Reward:FireServer("Legendary")
+end)
+end
+end
+end)
+end) local Sector2 = Tab:CreateSector("Misc","Right")
+ Sector2:AddLabel("Spam Skills") Sector2:AddToggle("Spam Skill Quake",false,function(t)
+   _G.SpamSkillQuake = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SpamSkillQuake then
+pcall(function()
+workspace.Karacter00.Quake.Smash.Fire:FireServer() 
+workspace.Karacter00.Quake.ShockWave.Fire:FireServer() 
+workspace.Karacter00.Quake.Wave.Fire:FireServer()
+end)
+end
+end
+end)
+end)
+Sector2:AddToggle("Spam Skill Love",false,function(t)
+   _G.SpamSkillLove = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SpamSkillLove then
+pcall(function()
+game:GetService("Players").LocalPlayer.Backpack.Love.Skill2.RemoteEvent:FireServer()
+end)
+end
+end
+end)
+end) Sector2:AddToggle("Spam Skill Paw",false,function(t)
+   _G.SpamSkillPaw = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SpamSkillPaw then
+pcall(function()
+workspace.Karacter00.Paw.PawNuke.Fire:FireServer(game:GetService("Players").LocalPlayer) 
+workspace.Karacter00.Paw.Torture.Fire:FireServer(game:GetService("Players").LocalPlayer)
+end)
+end
+end
+end)
+end) Sector2:AddButton("Haki Free",function()
+  print("")game:GetService("Lighting").HakiOn:FireServer()
+end) Sector2:AddButton("Haki Off",function()
+  print("")game:GetService("Lighting").HakiOff:FireServer()
+end) local Sector3 = Tab:CreateSector("Auto Stats","left")
+ Sector3:AddLabel("Auto Stats") Sector3:AddToggle("Auto Stats Sword",false,function(t)
+   _G.AutoStatsSword = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsSword then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Sword")
+end)
+end
+end
+end)
+end)
+Sector3:AddToggle("Auto Stats Fruit",false,function(t)
+   _G.AutoStatsFruit = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsFruit then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Special")
+end)
+end
+end
+end)
+end)
+Sector3:AddToggle("Auto Stats Defense",false,function(t)
+   _G.AutoStatsDefense = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsDefense then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Defense")
+end)
+end
+end
+end)
+end) Sector3:AddToggle("Auto Stats Melee",false,function(t)
+   _G.AutoStatsMelee = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsMelee then
+pcall(function()
+game:GetService("ReplicatedStorage").StatSystem.Points:FireServer("Special")
+end)
+end
+end
+end)
+end) Sector2:AddSeperator("Op Script")
+local config = library:ConfigSystem("MapName")
+config:Load()
+  while wait(.5) do
+    pcall(function()
+        local config = library:ConfigSystem("MapName")
+        config:Save()
+    end)
+end
