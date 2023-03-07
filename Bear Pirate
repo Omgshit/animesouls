@@ -169,7 +169,7 @@ end)
 end
 end
 end)
-end) Sector2:AddButton("Haki Free",function()
+end) Sector2:AddButton("Haki On",function()
   print("")game:GetService("Lighting").HakiOn:FireServer()
 end) Sector2:AddButton("Haki Off",function()
   print("")game:GetService("Lighting").HakiOff:FireServer()
