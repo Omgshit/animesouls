@@ -117,7 +117,6 @@ Sector2:AddButton("Equip Darkness Display",function()
 end) Sector2:AddButton("Equip Ultra Instinct Display",function()
   print("")game:GetService("ReplicatedStorage").Remotes.Equip:FireServer("Ultra Instinct","Effects")
 end) Sector2:AddSeperator("Op Script")
-local Tab2 = CenterHubNo1:CreateTab("Config")
 local config = library:ConfigSystem("MapName")
 config:Load()
   while wait(.5) do
