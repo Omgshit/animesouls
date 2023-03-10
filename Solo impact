@@ -1,0 +1,138 @@
+local Load_Key = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/Key"))()
+local key
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+current_key = nil
+
+if current_key == "nil" then
+    current_key = nil
+end
+
+if current_key ~= nil then
+if isfile("!KeyPurpleCat.txt") and readfile("!KeyPurpleCat.txt") == current_key then
+    
+key = Load_Key(nil)
+
+passkey = true
+
+else
+key = Load_Key(current_key , function()
+    writefile("!KeyPurpleCat.txt" , current_key)
+    
+
+    passkey = true
+end)
+end
+else
+    key = Load_Key(nil)
+    key.Text = "Loading . . ."
+    passkey = true
+end
+
+wait(.2)
+
+repeat wait() until passkey == true
+    
+    key.Text = "Key is Correct!"
+    
+    wait(1)
+    
+    game.CoreGui:FindFirstChild("PurpleCat"):Destroy()
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/GUI56"))()
+local CenterHubNo1 = library:CreateWindow(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,Enum.KeyCode.RightControl)
+local Tab = CenterHubNo1:CreateTab("Main")
+local Sector1 = Tab:CreateSector("Main","left")
+Sector1:AddLabel("Auto Farm")
+Sector1:AddToggle("Get Quest Level 1",false,function(t)
+   _G.GetQuestLevel1 = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GetQuestLevel1 then
+pcall(function()
+game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"QuestPick","Jurou"})
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Complete Quest",false,function(t)
+   _G.CompleteQuest = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.CompleteQuest then
+pcall(function()
+game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"QuestDone","Jurou"})
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Get Quest Level 45",false,function(t)
+   _G.GetQuestLevel45 = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.GetQuestLevel45 then
+pcall(function()
+game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"QuestPick","Sousuke"})
+end)
+end
+end
+end)
+end)
+Sector1:AddToggle("Complete Quest",false,function(t)
+   _G.CompleteQuest = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.CompleteQuest then
+pcall(function()
+game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"QuestDone","Sousuke"})
+end)
+end
+end
+end)
+end)
+local Sector2 = Tab:CreateSector("Misc","Right")
+ Sector2:AddLabel("Weapon Legendary Buy") Sector2:AddButton("Hammer",function()  print("")game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"WeaponBuy","Hammer"})
+end) Sector2:AddButton("Demon Sword",function() print("")game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"WeaponBuy","Demon Sword"})
+end) Sector2:AddButton("Mage King Staff",function() print("")game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"WeaponBuy","Mage King Staff"})
+end) Sector2:AddButton("Gold Bow",function()
+print("")game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"WeaponBuy","Gold Bow"})
+end) Sector2:AddButton("Refined Staff",function() print("")game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"WeaponBuy","Refined Staff"})
+end) Sector2:AddButton("Advanced Hammer",function() print("")game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"WeaponBuy","Advanced Hammer"})
+end) Sector2:AddButton("Long Sword",function() print("")game:GetService("ReplicatedStorage").Remotes.Server:FireServer({"WeaponBuy","Long Sword"})
+end) Sector2:AddToggle("Anti Afk",false,function(t)
+   _G.AntiAfk = t
+end)
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AntiAfk then
+pcall(function()
+local VirtualUser=game:service'VirtualUser' game:service'Players'.LocalPlayer.Idled:connect(function() VirtualUser:CaptureController() VirtualUser:ClickButton2(Vector2.new()) end) warn("Anti-Afk has Loaded")
+end)
+end
+end
+end)
+end) while wait(.5) do
+    pcall(function()
+        local config = library:ConfigSystem("MapName")
+        config:Save()
+    end)
+end
