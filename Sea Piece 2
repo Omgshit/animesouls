@@ -1,0 +1,264 @@
+local Load_Key = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/Key"))()
+local key
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+   wait(1)
+   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+current_key = nil
+
+if current_key == "nil" then
+    current_key = nil
+end
+
+if current_key ~= nil then
+if isfile("!KeyPurpleCat.txt") and readfile("!KeyPurpleCat.txt") == current_key then
+    
+key = Load_Key(nil)
+
+passkey = true
+
+else
+key = Load_Key(current_key , function()
+    writefile("!KeyPurpleCat.txt" , current_key)
+    
+
+    passkey = true
+end)
+end
+else
+    key = Load_Key(nil)
+    key.Text = "Loading . . ."
+    passkey = true
+end
+
+wait(.2)
+
+repeat wait() until passkey == true
+    
+    key.Text = "Key is Correct!"
+    
+    wait(1)
+    
+    game.CoreGui:FindFirstChild("PurpleCat"):Destroy()
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/GUI56"))()
+local CenterHubNo1 = library:CreateWindow(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,Enum.KeyCode.RightControl)
+local Tab = CenterHubNo1:CreateTab("Main")
+local Sector1 = Tab:CreateSector("Main","left")
+Sector1:AddLabel("Auto Farm")
+Sector1:AddToggle("Auto Attack",false,function(t)
+   _G.AutoAttack = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoAttack then
+pcall(function()
+workspace.Live.kacraft54["Client Handler"].Left:FireServer() end)
+end
+end
+end)
+end) Sector1:AddToggle("Auto Chests",false,function(t)
+   _G.AutoChests = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoChests then
+pcall(function()
+for i,v in pairs(game:GetService("Workspace")["Common Chest"]:GetDescendants()) do
+    if v.Name == "TouchInterest" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+wait(.1)
+for i,v in pairs(game:GetService("Workspace")["Rare Chest"]:GetDescendants()) do
+    if v.Name == "TouchInterest" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+wait(.1)
+end
+end
+end
+end
+end)
+end
+end
+end)
+end) 
+local Sector2 = Tab:CreateSector("Misc","Right")
+ Sector2:AddLabel("Misc") local Tab = CenterHubNo1:CreateTab("Auto Stats") local Sector1 = Tab:CreateSector("Auto Sta5s","left") Sector1:AddToggle("Auto Stats Melee",false,function(t)
+   _G.AutoStatsMelee = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsMelee then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.IncreaseStat:FireServer("Melee",1) end)
+end
+end
+end)
+end)   Sector1:AddToggle("Auto Stats Defense",false,function(t)
+   _G.AutoStatsDefense = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsDefense then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.IncreaseStat:FireServer("Defense",1) end)
+end
+end
+end)
+end)    Sector1:AddToggle("Auto Stats Sword",false,function(t)
+   _G.AutoStatsSword = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsSword then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.IncreaseStat:FireServer("Sword",1) end)
+end
+end
+end)
+end) Sector1:AddToggle("Auto Stats Fruit",false,function(t)
+   _G.AutoStatsDevilFruit = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsDevilFruit then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.IncreaseStat:FireServer("DevilFruit",1)  end)
+end
+end
+end)
+end)                         
+local Tab = CenterHubNo1:CreateTab("Terleports")
+local Sector1 = Tab:CreateSector("Terleport","left") Sector1:AddButton("Logue Town",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(-371.958008, -0.161909103, 952.386719, 1, 0, 0, 0, 1, 0, 0, 0, 1)}):Play()
+end) Sector1:AddButton("Jungle",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(-586.625, -12.2921677, -2504.50488, 1, 0, 0, 0, 1, 0, 0, 0, 1)}):Play()
+end) Sector1:AddButton("Orange Town",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(-4171.46582, -17.0421391, -834.949463, 0.642763317, -0, -0.766064942, 0, 1, -0, 0.766064942, 0, 0.642763317)}):Play()
+end) Sector1:AddButton("Shells Town",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(-4428.76855, -16.7921391, -6779.65771, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)}):Play()
+end) Sector1:AddButton("Sandora",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(119.938599, -7.81496811, -7819.70947, 0.173624337, 0, 0.984811902, 0, 1, 0, -0.984811902, 0, 0.173624337)}):Play()
+end) Sector1:AddButton("Arlong Park",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(4154.23047, -16.9901352, -6568.88623, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)}):Play()
+end) Sector1:AddButton("Lower Skypiea",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(4228.27637, 591.21051, -503.672363, 0, 0, 1, 0, 1, -0, -1, 0, 0)}):Play()
+end) Sector1:AddButton("Upper Skypiea",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(2770.27637, 5663.09521, -2065.92236, 0, 0, 1, 0, 1, -0, -1, 0, 0)}):Play()
+end)  local Sector2 = Tab:CreateSector("Set Spawn","Right")
+ Sector2:AddLabel("Set Spawn Here") Sector2:AddToggle("Set Spawn Logue Town",false,function(t)
+   _G.SetSpawnLogueTown = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnLogueTown then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Logue Town") end)
+end
+end
+end)
+end)   Sector2:AddToggle("Set Spawn Jungle",false,function(t)
+   _G.SetSpawnJungle = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnJungle then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Jungle") end)
+end
+end
+end)
+end)   Sector2:AddToggle("Set Spawn Orange Town",false,function(t)
+   _G.SetSpawnOrangeTown = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnOrangeTown then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Orange Town") end)
+end
+end
+end)
+end)  Sector2:AddToggle("Set Spawn Shells Town",false,function(t)
+   _G.SetSpawnShellsTown = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnOShellsTown then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Shells Town") end)
+end
+end
+end)
+end)  Sector2:AddToggle("Set Spawn Sandora",false,function(t)
+   _G.SetSpawnSandora = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnSandora then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Sandora") end)
+end
+end
+end)
+end) Sector2:AddToggle("Set Spawn Arlong Park",false,function(t)
+   _G.SetSpawnArlongPark = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnArlongPark then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Arlong Park") end)
+end
+end
+end)
+end)  Sector2:AddToggle("Set Spawn Lower Skypiea",false,function(t)
+   _G.SetSpawnLowerSkypiea = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnLowerSkypiea then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Skypiea 1") end)
+end
+end
+end)
+end)  Sector2:AddToggle("Set Spawn Upper Skypiea",false,function(t)
+   _G.SetSpawnUpperSkypiea = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.SetSpawnUpperSkypiea then
+pcall(function()
+game:GetService("ReplicatedStorage").Requests.Main.SetSpawn:FireServer("Skypiea 2") end)
+end
+end
+end)
+end)                     
+    while wait(.5) do
+    pcall(function()
+        local config = library:ConfigSystem("MapName")
+        config:Save()
+    end)
+end
