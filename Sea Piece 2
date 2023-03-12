@@ -87,6 +87,7 @@ end
 end
 end)
 end) 
+
 local Tab = CenterHubNo1:CreateTab("Auto Stats") local Sector1 = Tab:CreateSector("Auto Sta5s","left") Sector1:AddToggle("Auto Stats Melee",false,function(t)
    _G.AutoStatsMelee = t
 end)
