@@ -1,3 +1,201 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/WHYSTRIV3/DumbHub/main/V1Library.lua", true))() local ui = Library:CreateWindow() 
 
-local Main = ui:new("Main")Main:CreateLabel("FirstLabel","Welcome To Script!") Main:CreateToggle("Kill Aura Strength", true, function()game:GetService("ReplicatedStorage").RemoteEvents.Strength.Client:FireServer("Combat") end) Main:CreateToggle("Kill Aura Sword", true, function()game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Katana") end) Main:CreateToggle("Kill Aura Dual Katana", true, function()game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Dual Katana","Attack") end) local AutoSkill = ui:new("AutoSkill")AutoSkill:CreateToggle("Auto Skill Katana", true, function()game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Katana","R") end) AutoSkill:CreateToggle("Auto Skill Fire Z", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Fire","Z") end) AutoSkill:CreateToggle("Auto Skill Fire C", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Fire","C") end) AutoSkill:CreateToggle("Auto Skill Fire X", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Fire","X") end) AutoSkill:CreateToggle("Auto Skill Gomu Z", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Gomu","Z") end) AutoSkill:CreateToggle("Auto Skill Gomu X", true, function()  game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Gomu","X") end) AutoSkill:CreateToggle("Auto Skill Gomu C", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Gomu","C") end) AutoSkill:CreateToggle("Auto Skill Bomb Z", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Bomb","Z") end) AutoSkill:CreateToggle("Auto Skill Bomb X", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Bomb","X") end) AutoSkill:CreateToggle("Auto Skill Bomb C", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Bomb","C") end) AutoSkill:CreateToggle("Auto Skill Barrier Z", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Barrier","Z") end) AutoSkill:CreateToggle("Auto Skill Barrier X", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Barrier","X") end) AutoSkill:CreateToggle("Auto Skill Barrier C", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Barrier","C") end) AutoSkill:CreateToggle("Auto Skill Ice Z", true, function()game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Ice","Z") end) AutoSkill:CreateToggle("Auto Skill Ice C", true, function()  game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Ice","C") end) AutoSkill:CreateToggle("Auto Skill Ice X", true, function()  game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Ice","X") end) AutoSkill:CreateToggle("Auto Skill Dual Katana R", true, function()game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Dual Katana","R") end) AutoSkill:CreateToggle("Auto Skill Dual Katana E", true, function()game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Dual Katana","E") end) local AutoStats = ui:new("AutoStats")AutoStats:CreateToggle("Auto Stats Strength", true, function()game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("Strength","1") end) AutoStats:CreateToggle("Auto Refund Stats", true, function()game:GetService("Players").LocalPlayer.PlayerGui.Menu.StatsFrame.Refund.RemoteEvent:FireServer() end) AutoStats:CreateToggle("Auto Stats Defense", true, function()game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("Defense","1") end) AutoStats:CreateToggle("Auto Stats Sword", true, function()game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("Sword","1") end) AutoStats:CreateToggle("Auto Stats Devil Fruit", true, function()game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("DevilFruit","1") end)
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/SmellLikeHacker/IDK/main/GUI56"))()
+local CenterHubNo1 = library:CreateWindow(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,Enum.KeyCode.RightControl)
+local Tab = CenterHubNo1:CreateTab("Main")
+local Sector1 = Tab:CreateSector("Main","left")
+Sector1:AddLabel("Auto Farm")
+Sector1:AddToggle("Auto Boss Thunder",false,function(t)
+   _G.AutoBossThunder = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoBossThunder then
+pcall(function()
+game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(7440.8457, 4350.9043, -3266.10669, 1, 0, 0, 0, 1, 0, 0, 0, 1)}):Play() 
+end)
+end
+end
+end)
+end) Sector1:AddToggle("Auto Chicken Boss",false,function(t)
+   _G.AutoChickenBoss = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoChickenBoss then
+pcall(function()
+game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(6510.36719, 4088.57446, -1491.02271, 1, 0, 0, 0, 1, 0, 0, 0, 1)}):Play() 
+end)
+end
+end
+end)
+end) Sector1:AddToggle("Kill Aura",false,function(t)
+   _G.KillAura = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.KillAura then
+pcall(function()
+game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Katana")
+game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Dual Katana","Attack") 
+game:GetService("ReplicatedStorage").RemoteEvents.Strength.Client:FireServer("Combat") 
+game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Triple Katana","Attack") 
+game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Free Sword")
+end)
+end
+end
+end)
+end) Sector1:AddToggle("Auto Give Money",false,function(t)
+   _G.AutoGiveMoney = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoGiveMoney then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.Menu.CodeFrame.RemoteEvent:FireServer("Sorry!")
+game:GetService("Players").LocalPlayer.PlayerGui.Menu.CodeFrame.RemoteEvent:FireServer("shutdown!")
+end)
+end
+end
+end)
+end) Sector1:AddToggle("inf Boost Exp",false,function(t)
+   _G.infBoostExp = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.infBoostExp then
+pcall(function()
+game:GetService("Players").LocalPlayer.PlayerGui.Menu.CodeFrame.RemoteEvent:FireServer("exp2x")
+
+game:GetService("Players").LocalPlayer.PlayerGui.Menu.CodeFrame.RemoteEvent:FireServer("pls!")
+end)
+end
+end
+end)
+end) 
+local Sector2 = Tab:CreateSector("Misc","Right")
+ Sector2:AddLabel("Misc") Sector2:AddButton("Terleport Random Fruit",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(8299.55664, 4267.17285, -2920.7793, 1, 0, 0, 0, 1, 0, 0, 0, 1)}):Play() 
+end) Sector2:AddButton("Terleport Chicken",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(7816.11816, 4149.42432, -4200.52539, 0.573598742, 0, -0.81913656, 0, 1, 0, 0.81913656, 0, 0.573598742)}):Play()
+end) Sector2:AddButton("Terleport Dual Katana",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(8000.70557, 4137.13477, -4603.62891, -0.995694757, 0, 0.0926962495, 0, 1, 0, -0.0926962495, 0, -0.995694757)}):Play()
+end) Sector2:AddButton("Terleport Rock Ord",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(6564.67188, 4071.2312, -2695.5564, 0, 0, 1, 0, 1, 0, -1, 0, 0)}):Play()
+end) Sector2:AddButton("Terleport Katana",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(6714.48096, 4070.03125, -2550.6272, 0, 0, -1, 0, 1, 0, 1, 0, 0)}):Play()
+end) Sector2:AddButton("Terleport Shark Saw",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(9079.3916, 4064.77832, -4850.32617, 0.999983788, 0, 0.00569722941, 0, 1, 0, -0.00569722941, 0, 0.999983788)}):Play()
+end) Sector2:AddButton("Terleport Haki Seller",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(9115.84082, 4122.41895, -1022.64307, -0.0560792685, 0, -0.998426318, 0, 1, 0, 0.998426318, 0, -0.0560792685)}):Play()
+end) Sector2:AddButton("Terleport Triple Katana",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(8286.49316, 4062.32275, -2893.8938, -1, 0, 0, 0, 1, 0, 0, 0, -1)}):Play()
+end) Sector2:AddButton("Terleport Thunder Sword",function()  print("")game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(0, Enum.EasingStyle.Linear, Enum.EasingDirection.Out,0,false,0),{CFrame = CFrame.new(7498.50635, 4347.93164, -3248.95947, -1, 0, 0, 0, 1, 0, 0, 0, -1)}):Play() 
+end)
+local Tab = CenterHubNo1:CreateTab("Auto Stats") local Sector1 = Tab:CreateSector("Auto Stats","left")    
+Sector1:AddToggle("Auto Stats Strength",false,function(t)
+   _G.AutoStatsStrength = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsStrength then
+pcall(function()
+game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("Strength","1")
+end)
+end
+end
+end)
+end)    Sector1:AddToggle("Auto Stats Sword",false,function(t)
+   _G.AutoStatsSword = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsSword then
+pcall(function()
+game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("Sword","1") 
+end)
+end
+end
+end)
+end)     Sector1:AddToggle("Auto Stats Defense",false,function(t)
+   _G.AutoStatsDefense = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsDefense then
+pcall(function()
+game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("Defense","1") 
+end)
+end
+end
+end)
+end)    Sector1:AddToggle("Auto Stats Devil Fruit",false,function(t)
+   _G.AutoStatsDevilFruit = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoStatsDevilFruit then
+pcall(function()
+game:GetService("ReplicatedStorage").System.Levels.Point:FireServer("DevilFruit","1") 
+end)
+end
+end
+end)
+end)   Sector1:AddButton("Refund Stats",function()  print("")game:GetService("Players").LocalPlayer.PlayerGui.Menu.StatsFrame.Refund.RemoteEvent:FireServer() 
+end)         
+local Tab = CenterHubNo1:CreateTab("Auto Skill") local Sector1 = Tab:CreateSector("Auto Skill","left")  
+Sector1:AddToggle("Auto Use All Skill",false,function(t)
+   _G.AutoUseAllSkill = t
+end)
+
+spawn(function()
+pcall(function()
+while wait() do
+if _G.AutoUseAllSkill then
+pcall(function()
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Bomb","C") 
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Bomb","X") 
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Gomu","C")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Gomu","X")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Gomu","Z") 
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Fire","X") 
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Fire","Z") 
+game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Katana","R") 
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Smoke","X")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Smoke","C")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Earth","C")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Smoke","Z")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Earth","X")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Water","Z")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Barrier","Z")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Water","X")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Earth","Z")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Barrier","X") 
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Barrier","C")
+game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Ice","Z") 
+ game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Ice","C")
+ game:GetService("ReplicatedStorage").RemoteEvents.DevilFruits.Client:FireServer("Ice","X")
+ game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Dual Katana","R") 
+ game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Dual Katana","E") 
+game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Triple Katana","R") 
+game:GetService("ReplicatedStorage").RemoteEvents.Sword.Client:FireServer("Free Sword","E")
+end)
+end
+end
+end)
+end)
+   while wait(.5) do
+    pcall(function()
+        local config = library:ConfigSystem("MapName")
+        config:Save()
+    end)
+end
