@@ -6956,6 +6956,7 @@ Main:Seperator("Pirate Raid")
 
 Main:Seperator("Boss")
 
+
 local BoSs = Main:Label("Status : Select Boss")
 
 
@@ -6979,11 +6980,9 @@ elseif World3 then
 	tableBoss = {"Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
 end
 
-
-Main:Dropdown("Select Boss",tableBoss,function(value)
-    _G.Select_Boss = value
-end)
-
+    Main:Dropdown("Select Boss",tableBoss,function(value)
+        _G.SelectBoss = value
+    end)
 
 
 Main:Toggle("Auto Farm Boss",_G.Auto_Farm_Boss,function(value)
@@ -15171,7 +15170,6 @@ end)
 
 wait(4)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/hub5144/1/main/2'))()
-
 
 
 
