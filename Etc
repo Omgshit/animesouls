@@ -13775,7 +13775,7 @@ end)
 
 Misc:Seperator("Lock Function")
 
-	_G.Levelclose = 2450
+	_G.Levelclose = 2550
 	_G.LevelcloseFragments = 1000000
 	_G.Lock_Candy = 100000
 	_G.Lock_Bone = 5000
@@ -13794,7 +13794,7 @@ Misc:Seperator("Lock Function")
 		end
 	end)
 	
-LockLevelValue = 2450
+LockLevelValue = 2550
 OldLevel = game.Players.localPlayer.Data.Level.Value
 Misc:Slider("Select Level Lock Farm",1,LockLevelValue,LockLevelValue,nil,function(value)
 	LockLevelValue = value
