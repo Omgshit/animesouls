@@ -9704,7 +9704,7 @@ local Sword = Ss:Label("Sword : ")
 
 local Gun = Ss:Label("Gun : ")
 
-local Fruit = Ss:Label("Fruit : ")
+local Fruit = Ss:Label("Fruit Points : ")
 
 
 
@@ -9714,7 +9714,7 @@ local Fruit = Ss:Label("Fruit : ")
 
             pcall(function()
 
-                Melee:Set("Melee : "..game.Players.localPlayer.Data.Stats.Melee.Level.Value)
+                Melee:Set("Melee Points : "..game.Players.localPlayer.Data.Stats.Melee.Level.Value)
 
             end)
 
@@ -9730,7 +9730,7 @@ local Fruit = Ss:Label("Fruit : ")
 
             pcall(function()
 
-                Defense:Set("Defense : "..game.Players.localPlayer.Data.Stats.Defense.Level.Value)
+                Defense:Set("Defense Points : "..game.Players.localPlayer.Data.Stats.Defense.Level.Value)
 
             end)
 
@@ -9746,7 +9746,7 @@ local Fruit = Ss:Label("Fruit : ")
 
             pcall(function()
 
-                Sword:Set("Sword : "..game.Players.localPlayer.Data.Stats.Sword.Level.Value)
+                Sword:Set("Sword Points : "..game.Players.localPlayer.Data.Stats.Sword.Level.Value)
 
             end)
 
@@ -9762,7 +9762,7 @@ local Fruit = Ss:Label("Fruit : ")
 
             pcall(function()
 
-                Gun:Set("Gun : "..game.Players.localPlayer.Data.Stats.Gun.Level.Value)
+                Gun:Set("Gun Points : "..game.Players.localPlayer.Data.Stats.Gun.Level.Value)
 
             end)
 
@@ -9778,7 +9778,7 @@ local Fruit = Ss:Label("Fruit : ")
 
             pcall(function()
 
-                Fruit:Set("Fruit : "..game.Players.localPlayer.Data.Stats["Demon Fruit"].Level.Value)
+                Fruit:Set("Fruit Points : "..game.Players.localPlayer.Data.Stats["Demon Fruit"].Level.Value)
 
             end)
 
@@ -11916,9 +11916,6 @@ end
 end
 
 end)
-
-
-
 
 
 
@@ -16063,7 +16060,89 @@ end)
 
 	Weapon:Seperator(" Tushita ")
 
+Weapon:Toggle("Auto Kill Boss Tushita",_G.Autotushita,function(value)
 
+ _G.Autotushita = value
+
+	end)
+
+	
+
+	
+
+spawn(function()
+
+		while wait() do
+
+					if _G.Autotushita then
+
+						if game:GetService("Workspace").Enemies:FindFirstChild("Longma") then
+
+							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+
+								if v.Name == ("Longma" or v.Name == "Longma") and v.Humanoid.Health > 0 and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
+
+									repeat wait()
+
+										StartMagnet = true
+
+										AutoHaki()
+
+										if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Select_Weapon) then
+
+											wait()
+
+											EquipWeapon(_G.Select_Weapon)
+
+										end
+
+										PosMon = v.HumanoidRootPart.CFrame
+
+											game:GetService'VirtualUser':CaptureController()
+
+											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+
+										v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+
+										v.Humanoid.JumpPower = 0
+
+										v.Humanoid.WalkSpeed = 0
+
+										v.HumanoidRootPart.CanCollide = false
+
+										v.Humanoid:ChangeState(11)
+
+										topos(v.HumanoidRootPart.CFrame * MethodFarm)
+
+									until not _G.Autotushita or not v.Parent or v.Humanoid.Health <= 0
+
+									StartMagnet = false
+
+								end
+
+							end
+
+						else
+
+							topos(CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125))
+
+						end
+
+					end
+
+				end
+
+		end)
+
+
+
+Weapon:Toggle("Auto Holy Torch",_G.Auto_Holy_Torch,function(value)
+
+ _G.Auto_Holy_Torch = value
+
+end)
+
+end
 
 Weapon:Toggle("Auto Tushita", _G.Autotushita,function(value)
 
@@ -16170,7 +16249,6 @@ Weapon:Toggle("Auto Tushita", _G.Autotushita,function(value)
         end
 
     end)
-
 	
 
 		Weapon:Seperator(" Rainbow Haki ")
@@ -16751,93 +16829,7 @@ end)
 
 
 
-Weapon:Seperator(" Tushita ")
 
-
-
-Weapon:Toggle("Auto Kill Boss Tushita",_G.Autotushita,function(value)
-
- _G.Autotushita = value
-
-	end)
-
-	
-
-	
-
-spawn(function()
-
-		while wait() do
-
-					if _G.Autotushita then
-
-						if game:GetService("Workspace").Enemies:FindFirstChild("Longma") then
-
-							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-
-								if v.Name == ("Longma" or v.Name == "Longma") and v.Humanoid.Health > 0 and v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
-
-									repeat wait()
-
-										StartMagnet = true
-
-										AutoHaki()
-
-										if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Select_Weapon) then
-
-											wait()
-
-											EquipWeapon(_G.Select_Weapon)
-
-										end
-
-										PosMon = v.HumanoidRootPart.CFrame
-
-											game:GetService'VirtualUser':CaptureController()
-
-											game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-
-										v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-
-										v.Humanoid.JumpPower = 0
-
-										v.Humanoid.WalkSpeed = 0
-
-										v.HumanoidRootPart.CanCollide = false
-
-										v.Humanoid:ChangeState(11)
-
-										topos(v.HumanoidRootPart.CFrame * MethodFarm)
-
-									until not _G.Autotushita or not v.Parent or v.Humanoid.Health <= 0
-
-									StartMagnet = false
-
-								end
-
-							end
-
-						else
-
-							topos(CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125))
-
-						end
-
-					end
-
-				end
-
-		end)
-
-
-
-Weapon:Toggle("Auto Holy Torch",_G.Auto_Holy_Torch,function(value)
-
- _G.Auto_Holy_Torch = value
-
-end)
-
-end
 
 
 
@@ -16845,7 +16837,21 @@ if World3 then
 
 
 
-Weapon:Seperator("  ")
+Weapon:Seperator(" Observation ")
+
+
+local ObservationLevel = Weapon:Label("")
+
+spawn(function()
+	while game:GetService("RunService").Heartbeat:wait() do
+		if game.Players.LocalPlayer.VisionRadius.Value == 3000 then
+			value = "Max"
+		else
+			value = math.round(game.Players.LocalPlayer.VisionRadius.value)
+		end
+		ObservationLevel:Set("Observation Haki Level : "..tostring(value))
+	end
+end)
 
 
 
@@ -29310,7 +29316,6 @@ end)
 wait(4)
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/hub5144/1/main/2'))()
-
 
 
 
