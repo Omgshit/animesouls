@@ -21277,7 +21277,7 @@ end)
 
 
 
-Setting:Toggle("Fast Attack [New]",true,function(value)
+Setting:Toggle("Fast Attack [Lag]",false,function(value)
 
  _G.FastAttack = value
 
@@ -21827,7 +21827,7 @@ ca:Toggle("Auto Trade Azure Ember",AutoTrade,function(J)
     while wait() do
 		pcall(function()
 			if AutoTrade then
-			wait(0.4)
+			wait(0.6)
 			game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/KitsuneStatuePray"):InvokeServer()
 			end
 		end)
@@ -21857,6 +21857,26 @@ spawn(function()
         wait(0.0000000000000000000000000000000000000000000000000000000001)  -- Chờ một lát trước khi kiểm tra lại
 
     end
+
+end)
+
+ca:Button("Tween to Kitsune Island",function()
+
+    if game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland") then
+
+                function toTargetWait(a)local b=(a.p-game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude;tweenrach=game:GetService('TweenService'):Create(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"),TweenInfo.new(b/310,Enum.EasingStyle.Linear),{CFrame=a})tweenrach:Play()end;toTargetWait(workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island").CFrame*CFrame.new(0,250,0))
+
+                else
+
+game.StarterGui:SetCore("SendNotification", {
+
+        Title = "Omg Hub"; -- the title (ofc)
+
+        Text = "Kitsune Island Not Found!"; -- what the text says (ofc)
+
+        Duration = 3; -- how long the notification should in secounds
+
+        }) end
 
 end)
 
@@ -48241,7 +48261,7 @@ spawn(function()
 
 
 
-    while wait(.1) do
+    while wait() do
 
 
 
@@ -48429,7 +48449,7 @@ spawn(function()
 
 
 
-                        repeat wait(.001)
+                        repeat wait()
 
 
 
@@ -49486,79 +49506,6 @@ end
 
 
  DevilFruit:Seperator(" Fruit ")
-
-
-
- 
-
-
-
- DevilFruit:Dropdown("Select Fruit Eat",FruitList,function(value)
-
-
-
-  _G.SelectFruitEat = value
-
-
-
-  end)
-
-
-
- 
-
-
-
- DevilFruit:Toggle("Auto Eat Fruit",_G.AutoEatFruit,function(value)
-
-
-
-  _G.AutoEatFruit = value
-
-
-
-  end)
-
-
-
- 
-
-
-
- spawn(function()
-
-
-
-  pcall(function()
-
-
-
-   while wait(.1) do
-
-
-
-   if _G.AutoEatFruit then
-
-
-
-   game:GetService("Players").LocalPlayer.Character:FindFirstChild(_G.SelectFruitEat).EatRemote:InvokeServer()
-
-
-
-   end
-
-
-
-   end
-
-
-
-   end)
-
-
-
- end)
-
 
 
 
