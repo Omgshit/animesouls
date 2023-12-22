@@ -21649,13 +21649,18 @@ spawn(function()
 
 
 
+
              if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
 
 
 
                         FullMoon:Set("🌑 : Full Moon 100%")
 
+            elseif game:GetService("Lighting").Sky.MoonTextureId=="rbxassetid://15493317929" then
 
+
+
+                        FullMoon:Set("🌌 : Blue Moon 100%")
 
                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
 
@@ -21822,6 +21827,7 @@ ca:Toggle("Auto Trade Azure Ember",AutoTrade,function(J)
     while wait() do
 		pcall(function()
 			if AutoTrade then
+			wait(0.4)
 			game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/KitsuneStatuePray"):InvokeServer()
 			end
 		end)
@@ -38763,8 +38769,7 @@ spawn(function()
 
 
         pcall(function()
-
-
+        
 
              if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
 
@@ -38772,7 +38777,11 @@ spawn(function()
 
                         FullMoon:Set("🌑 : Full Moon 100%")
 
+                     elseif game:GetService("Lighting").Sky.MoonTextureId=="rbxassetid://15493317929" then
 
+
+
+                        FullMoon:Set("🌌 : Blue Moon 100%")
 
                     elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
 
