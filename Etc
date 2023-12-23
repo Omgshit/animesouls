@@ -21716,6 +21716,50 @@ spawn(function()
 
 end)
 
+local TimeKitsune= ca:Label("🧭 Waiting For Kitsune Island")
+
+spawn(function()
+
+
+
+        pcall(function()
+
+
+
+            while wait() do
+
+
+
+                if game:GetService("Players").LocalPlayer.PlayerGui.Main.Timer.Visible == true then
+
+
+
+                    TimeKitsune:Set(game:GetService("Players").LocalPlayer.PlayerGui.Main.Timer.Text)
+
+
+
+                else
+
+
+
+                    TimeKitsune:Set("🧭 Waiting For Kitsune Island")
+
+
+
+                end
+
+
+
+            end
+
+
+
+        end)
+
+
+
+    end)
+
 local mo = ca:Label("")
 
 
@@ -47154,7 +47198,7 @@ Dungeon:Seperator("Dungeon")
 
 
 
-local TimeRaid = Dungeon:Label("Wait For Dungeon")
+local TimeRaid = Dungeon:Label("🧭 Waiting For Dungeon")
 
 
 
@@ -47189,8 +47233,7 @@ local TimeRaid = Dungeon:Label("Wait For Dungeon")
     
 
 
-
-    spawn(function()
+spawn(function()
 
 
 
@@ -47214,7 +47257,7 @@ local TimeRaid = Dungeon:Label("Wait For Dungeon")
 
 
 
-                    TimeRaid:Set("Wait For Dungeon")
+                    TimeRaid:Set("🧭 Waiting For Dungeon")
 
 
 
