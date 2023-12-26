@@ -20249,13 +20249,167 @@ end)
 
 
 
-
-
-
-
 Setting:Seperator(" Setting ")
 
+Setting:Dropdown("Select Farm Method", {
 
+
+
+ "Behind","Below","Upper"
+
+
+
+},function(value)
+
+
+
+ _G.Method = value
+
+
+
+end)
+
+
+
+
+
+
+
+spawn(function()
+
+
+
+ while wait() do
+
+
+
+ pcall(function()
+
+
+
+  if _G.Method == "Behind" then
+
+
+
+  MethodFarm = CFrame.new(0,0,_G.DistanceMob)
+
+
+
+  elseif _G.Method == "Below" then
+
+
+
+  MethodFarm = CFrame.new(0,-_G.DistanceMob,0) * CFrame.Angles(math.rad(90),0,0)
+
+
+
+  elseif _G.Method == "Upper" then
+
+
+
+  MethodFarm = CFrame.new(0,_G.DistanceMob,0) * CFrame.Angles(math.rad(-90),0,0)
+
+
+
+  else
+
+
+
+   MethodFarm = CFrame.new(0,0,_G.DistanceMob)
+
+
+
+  end
+
+
+
+  end)
+
+
+
+ end
+
+
+
+ end)
+
+
+function CheckAntiCheatBypass()
+    for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if
+                v.Name == "General" or v.Name == "Shiftlock" or v.Name == "FallDamage" or v.Name == "4444" or
+                    v.Name == "CamBob" or
+                    v.Name == "JumpCD" or
+                    v.Name == "Looking" or
+                    v.Name == "Run"
+             then
+                v:Destroy()
+            end
+        end
+    end
+    for i, v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
+        if v:IsA("LocalScript") then
+            if
+                v.Name == "RobloxMotor6DBugFix" or v.Name == "Clans" or v.Name == "Codes" or
+                    v.Name == "CustomForceField" or
+                    v.Name == "MenuBloodSp" or
+                    v.Name == "PlayerList"
+             then
+                v:Destroy()
+            end
+        end
+    end
+end
+
+CheckAntiCheatBypass()
+
+
+Setting:Toggle("Anti Ban",true,function(value)
+
+
+
+ _G.A = value
+
+
+
+end)
+
+spawn(function()
+
+
+
+ pcall(function()
+
+
+
+  while wait() do
+
+
+
+  if _G.A then
+
+
+
+CheckAntiCheatBypass()
+
+
+
+  end
+
+
+
+  end
+
+
+
+  end)
+
+
+
+ end)
+ 
+ 
 
 Setting:Toggle("Auto Set Spawn Points",true,function(value)
 
@@ -20381,91 +20535,6 @@ end
 
 
 
-
-
-
-
-Setting:Dropdown("Select Farm Method", {
-
-
-
- "Behind","Below","Upper"
-
-
-
-},function(value)
-
-
-
- _G.Method = value
-
-
-
-end)
-
-
-
-
-
-
-
-spawn(function()
-
-
-
- while wait() do
-
-
-
- pcall(function()
-
-
-
-  if _G.Method == "Behind" then
-
-
-
-  MethodFarm = CFrame.new(0,0,_G.DistanceMob)
-
-
-
-  elseif _G.Method == "Below" then
-
-
-
-  MethodFarm = CFrame.new(0,-_G.DistanceMob,0) * CFrame.Angles(math.rad(90),0,0)
-
-
-
-  elseif _G.Method == "Upper" then
-
-
-
-  MethodFarm = CFrame.new(0,_G.DistanceMob,0) * CFrame.Angles(math.rad(-90),0,0)
-
-
-
-  else
-
-
-
-   MethodFarm = CFrame.new(0,_G.DistanceMob,0)
-
-
-
-  end
-
-
-
-  end)
-
-
-
- end
-
-
-
- end)
 
 
 
@@ -28032,6 +28101,376 @@ Main:Button("Instant Tp Chest (Risk)",function()
 
 
 
+Main:Seperator(" Christmas Event ")
+
+
+
+
+local TimeCandy  = Main:Label("Total")
+
+
+
+
+
+
+
+spawn(function()
+
+
+
+
+
+
+
+    while wait() do
+
+
+
+
+
+
+
+        pcall(function()
+
+
+
+
+
+
+
+            TimeCandy:Set("Time For Event Start : "..(game:GetService("Workspace").Countdown.SurfaceGui.TextLabel.Text))
+
+
+
+
+
+
+
+        end)
+
+
+
+
+
+
+
+    end
+
+
+
+
+
+
+
+end)
+
+
+
+
+
+
+local  CandyCheck  = Main:Label("Total")
+
+
+
+
+
+
+
+spawn(function()
+
+
+
+
+
+
+
+    while wait() do
+
+
+
+
+
+
+
+        pcall(function()
+
+
+
+
+
+
+
+            CandyCheck:Set("Candy : "..(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies","Check")))
+
+
+
+
+
+
+
+        end)
+
+
+
+
+
+
+
+    end
+
+
+
+
+
+
+
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+if World3 then
+
+Main:Toggle("Auto Farm Candy",_G.Caca,function(value)
+
+ _G.Caca = value
+
+ _G.click = value
+
+StopTween(_G.Caca)
+
+end)
+
+spawn(function()
+
+ game:GetService("RunService").Heartbeat:Connect(function()
+
+  pcall(function()
+
+   for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+
+   if _G.Caca and StartMagnetBoneMon and (v.Name == "Candy Pirate" or v.Name == "Snow Demon")  and (v.HumanoidRootPart.Position - PosMonBone.Position).magnitude <= 350 then
+
+   v.HumanoidRootPart.CFrame = PosMonBone
+
+   v.HumanoidRootPart.CanCollide = false
+
+   v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+
+   if v.Humanoid:FindFirstChild("Animator") then
+
+   v.Humanoid.Animator:Destroy()
+
+   end
+
+   sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+
+   end
+
+   end
+
+   end)
+
+  end)
+
+end)
+
+spawn(function()
+
+ while wait() do
+
+ if _G.Caca and World3 then
+
+ pcall(function()
+
+  if game:GetService("Workspace").Enemies:FindFirstChild("Candy Pirate") or game:GetService("Workspace").Enemies:FindFirstChild("Snow Demon") then
+
+  for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+
+  if v.Name == "Candy Pirate" or v.Name == "Snow Demon" then
+
+  if v.Humanoid.Health > 0 then
+
+  repeat wait()
+
+  AutoHaki()
+
+  EquipWeapon(_G.Select_Weapon)
+
+  StartMagnetBoneMon = true
+
+  v.HumanoidRootPart.CanCollide = false
+
+  v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+
+  PosMonBone = v.HumanoidRootPart.CFrame
+
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+
+  game:GetService'VirtualUser':CaptureController()
+
+  game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+
+  until _G.Caca == false or not v.Parent or v.Humanoid.Health <= 0
+
+  end
+
+  end
+
+  end
+
+  else
+
+   StartMagnetBoneMon = true
+
+  for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+
+
+  if v.Name == "Candy Pirate" then
+
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+
+  elseif v.Name == "Snow Demon" then
+
+  topos(v.HumanoidRootPart.CFrame * MethodFarm)
+
+  end
+
+  end
+
+  topos(CFrame.new(-1014.4241943359375, 149.11068725585938, -14555.962890625))
+
+  end
+
+  end)
+
+ end
+
+ end
+
+ end)
+ end
+ 
+ 
+	
+
+Main:Toggle("Auto Buy Sleigh [ Candies ]", false, function(vu)
+    AutopBuyEXPBone = vu
+end)
+
+spawn(function()
+    pcall(function()
+        while wait(.1) do
+            if AutopBuyEXPBone then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies", "Buy", 3, 3)
+            end
+        end
+    end)
+end)
+
+Main:Toggle("Auto Buy Santa Hat [ Candies ]", false, function(vu)
+    AutoBuEXPBone = vu
+end)
+
+spawn(function()
+    pcall(function()
+        while wait(.1) do
+            if AutoBuEXPBone then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies", "Buy", 3, 2)
+            end
+        end
+    end)
+end)
+
+Main:Toggle("Auto Buy Elf Hat [ Candies ]", false, function(vu)
+    AutoBuyEXPone = vu
+end)
+
+spawn(function()
+    pcall(function()
+        while wait(.1) do
+            if AutoBuyEXPone then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies", "Buy", 3, 1)
+            end
+        end
+    end)
+end)
+
+Main:Toggle("Auto Buy 500 Fragments [ Candies ]", false, function(vu)
+    AutoBuyXPBone = vu
+end)
+
+spawn(function()
+    pcall(function()
+        while wait(.1) do
+            if AutoBuyXPBone then
+                local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 2,
+    [4] = 2
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+            end
+        end
+    end)
+end)
+
+Main:Toggle("Auto Buy 200 Fragments [ Candies ]", false, function(vu)
+    AutoBuyEXBone = vu
+end)
+
+spawn(function()
+    pcall(function()
+        while wait(.1) do
+            if AutoBuyEXBone then
+                local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 2,
+    [4] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+            end
+        end
+    end)
+end)
+
+Main:Toggle("Auto Buy EXP x2 [ Candies ]", false, function(vu)
+    AutoBuyEXPBone = vu
+end)
+
+spawn(function()
+    pcall(function()
+        while wait(.1) do
+            if AutoBuyEXPBone then
+                if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Level.Exp.Text, "2x") then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies","Buy",1,1)
+                end
+            end
+        end
+    end)
+end)
+
+Main:Button("Buy Reroll race", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies","Buy",1,3)
+end)
+
+Main:Button("Buy Refund Stats", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies","Buy",1,2)
+end)
 
 
 
@@ -31649,6 +32088,7 @@ Weapon:Seperator("V2 + Ghoul ")
  _G.mudautr = value
 
 
+_G.click = value
 
 end)
 
@@ -34114,7 +34554,7 @@ end)
 
 
 
-	Weapon:Toggle("Auto Yama",_G.Auto_Yama,function(value)
+	Weapon:Toggle("Auto Get Yama When Get 30 Kills",_G.Auto_Yama,function(value)
 
 
 
@@ -35789,6 +36229,7 @@ Weapon:Toggle("Auto Observation Haki V2",_G.AutoObservationHakiV2,function(x)
 		_G.AutoObservationHakiV2 = x
 
 
+      _G.click = value
 
 	end)
 
@@ -40743,8 +41184,66 @@ end)
 
 
  Race:Seperator("Race V4")
+ 
+ function CheckAcientOneStatus()
+    if not game.Players.LocalPlayer.Character:FindFirstChild("RaceTransformed") then
+        return "You have yet to achieve greatness"
+    end
+    local v227 = nil
+    local v228 = nil
+    local v229 = nil
+    v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
+    if v229 == 1 then
+        return "Required Train More"
+    elseif v229 == 2 or v229 == 4 or v229 == 7 then
+        return "Can Buy Gear With " .. v227 .. " Fragments"
+    elseif v229 == 3 then
+        return "Required Train More"
+    elseif v229 == 5 then
+        return "You Are Done Your Race."
+    elseif v229 == 6 then
+        return "Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More"
+    end
+    if v229 ~= 8 then
+        if v229 == 0 then
+            return "Ready For Trial"
+        else
+            return "You have yet to achieve greatness"
+        end
+    end
+    return "Remaining " .. 10 - v228 .. " training sessions."
+end
 
 
+local  V4  = Race:Label("Total")
+
+
+
+spawn(function()
+
+
+
+    while wait() do
+
+
+
+        pcall(function()
+
+
+
+            V4:Set("Anclient One Status : " .. tostring(CheckAcientOneStatus()))
+
+
+
+        end)
+
+
+
+    end
+
+
+
+end)
 
   Race:Toggle("Auto Trials",_G.winv4,function(value)
 
