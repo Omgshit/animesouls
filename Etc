@@ -366,415 +366,11 @@ end)
 
 
 
-	--// Fast Attack
 
-
-
-	local AttackList = {"Slow", "Normal", "Pro"}
-
-
-
-	_G.FastAttackDelay = "Normal"
-
-
-
-	AttackList = true
-
-
-
-	spawn(function()
-
-
-
-	    while wait(.1) do
-
-
-
-	        if _G.FastAttackDelay then
-
-
-
-	            pcall(function()
-
-
-
-	                if _G.FastAttackDelay == "Slow" then
-
-
-
-	                    _G.FastAttackDelay = 0.2
-
-
-
-	                elseif _G.FastAttackDelay == "Default" then
-
-
-
-	                    _G.FastAttackDelay = 0.5
-
-
-
-	                elseif _G.FastAttackDelay == "Normal" then
-
-
-
-	                    _G.FastAttackDelay = 0.2
-
-
-
-	                elseif _G.FastAttackDelay == "Pro" then
-
-
-
-	                    _G.FastAttackDelay = 0
-
-
-
-	                end
-
-
-
-	            end)
-
-
-
-	        end
-
-
-
-	    end
-
-
-
-	end)
 
 
 
 	
-
-
-
-	
-
-
-
-	
-
-
-
-	spawn(function()
-
-
-
-	while true do
-
-
-
-	if _G.FastAttack then
-
-
-
-	pcall(function()
-
-
-
-	CameraShakerR:Stop()
-
-
-
-	CombatFramework.activeController.attacking = false
-
-
-
-	CombatFramework.activeController.timeToNextAttack = 0
-
-
-
-	CombatFramework.activeController.increment = 3
-
-
-
-	CombatFramework.activeController.hitboxMagnitude = 100
-
-
-
-	CombatFramework.activeController.blocking = false
-
-
-
-	CombatFramework.activeController.timeToNextBlock = 0
-
-
-
-	CombatFramework.activeController.focusStart = 0
-
-
-
-	CombatFramework.activeController.humanoid.AutoRotate = true
-
-
-
-	end)
-
-
-
-	end
-
-
-
-	task.wait()
-
-
-
-	end
-
-
-
-	end)
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-
-
-	--// Module
-
-
-
-	function GetBladeHit()
-
-
-
-	    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
-
-
-
-	    local CmrFwLib = CombatFrameworkLib[2]
-
-
-
-	    local p13 = CmrFwLib.activeController
-
-
-
-	    local weapon = p13.blades[1]
-
-
-
-	    if not weapon then 
-
-
-
-	        return weapon
-
-
-
-	    end
-
-
-
-	    while weapon.Parent ~= game.Players.LocalPlayer.Character do
-
-
-
-	        weapon = weapon.Parent 
-
-
-
-	    end
-
-
-
-	    return weapon
-
-
-
-	end
-
-
-
-	function AttackHit()
-
-
-
-	    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
-
-
-
-	    local CmrFwLib = CombatFrameworkLib[2]
-
-
-
-	    local plr = game.Players.LocalPlayer
-
-
-
-	    for i = 1, 1 do
-
-
-
-	        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(plr.Character,{plr.Character.HumanoidRootPart},60)
-
-
-
-	        local cac = {}
-
-
-
-	        local hash = {}
-
-
-
-	        for k, v in pairs(bladehit) do
-
-
-
-	            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
-
-
-
-	                table.insert(cac, v.Parent.HumanoidRootPart)
-
-
-
-	                hash[v.Parent] = true
-
-
-
-	            end
-
-
-
-	        end
-
-
-
-	        bladehit = cac
-
-
-
-	        if #bladehit > 0 then
-
-
-
-	            pcall(function()
-
-
-
-	                CmrFwLib.activeController.timeToNextAttack = 1
-
-
-
-	                CmrFwLib.activeController.attacking = false
-
-
-
-	                CmrFwLib.activeController.blocking = false
-
-
-
-	                CmrFwLib.activeController.timeToNextBlock = 0
-
-
-
-	                CmrFwLib.activeController.increment = 3
-
-
-
-	                CmrFwLib.activeController.hitboxMagnitude = 100
-
-
-
-	                CmrFwLib.activeController.focusStart = 0
-
-
-
-	                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetBladeHit()))
-
-
-
-	                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
-
-
-
-	            end)
-
-
-
-	        end
-
-
-
-	    end
-
-
-
-	end
-
-
-
-	spawn(function()
-
-
-
-	    while wait(.1) do
-
-
-
-	        if _G.FastAttack then
-
-
-
-	            pcall(function()
-
-
-
-	                repeat task.wait(_G.FastAttackDelay)
-
-
-
-	                    AttackHit()
-
-
-
-	                until not _G.FastAttack
-
-
-
-	            end)
-
-
-
-	        end
-
-
-
-	    end
-
-
-
-	end)
 
 
 
@@ -16778,7 +16374,7 @@ spawn(function()
 
 
 
-		  	if _G.Auto_Farm_Level or _G.Auto_New_World or _G.AutoFarmFruitMastery or _G.thuocsung or _G.sungtegiac or _G.shinapo or _G.chatpong or _G.rangnanh or  _G.magma or _G.Auto_Third_World or _G.duoica or _G.tocquy or _G.TeleportIsland or _G.SeaBeasts1 or _G.vayrong or _G.Auto_Farm_Boss or _G.Autotushita or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper  or _G.Auto_Farm_Bone or _G.canho or _G.Cacao  or _G.nuocmat or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.d or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.AutoFarmMaterial or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.autoraid or AutoNextIsland or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.AutoFarmSelectMonster or _G.AutoFarmKenHakivor or _G.AutoObservationHakiV2  or _G.AutoFactory or _G.Auto_Kill_Law then
+		  	if _G.Auto_Farm_Level or _G.Auto_New_World or _G.AutoFarmFruitMastery or _G.thuocsung or _G.sungtegiac or _G.shinapo or _G.chatpong or _G.rangnanh or  _G.magma or _G.Auto_Third_World or _G.duoica or _G.tocquy or _G.TeleportIsland or _G.SeaBeasts1 or _G.vayrong or _G.Auto_Farm_Boss or _G.Autotushita or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper  or _G.Auto_Farm_Bone or _G.canho or _G.Cacao  or _G.nuocmat or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.d or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.AutoFarmMaterial or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.autoraid or AutoNextIsland or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.AutoFarmSelectMonster or _G.AutoFarmKenHakivor or _G.AutoObservationHakiV2  or _G.AutoFactory or _G.Auto_Kill_Law or _G.Caca or _G.bjirFishCrewBoat then
 
 
 
@@ -16858,7 +16454,7 @@ spawn(function()
 
 
 
-			if _G.Auto_Farm_Level or _G.Auto_New_World or _G.TeleportIsland or _G.Auto_Third_World or _G.shinapo or _G.rangnanh or _G.chatpong or _G.thuocsung or _G.sungtegiac or _G.Auto_Farm_Chest or _G.duoica or  _G.Auto_Farm_Boss or _G.SeaBeasts1 or _G.vayrong  or _G.tocquy or _G.Auto_Elite_Hunter or _G.AutoFarmKenHaki or _G.AutoFactory or _G.AutoFarmSelectMonster or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.d or _G.Auto_Rengoku or _G.Autotushita or _G.Auto_Farm_Radioactive   or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Cacao or _G.canho or _G.magma or _G.Auto_Farm_Mini_Tusk or _G.nuocmat or  _G.Auto_Farm_Bone or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.AutoFarmMaterial or _G.autoraid or _G.Auto_Twin_Hook or AutoNextIsland or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.AutoObservationHakiV2 or _G.d or _G.Auto_Next_Island or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.Auto_Kill_Law then
+			if _G.Auto_Farm_Level or _G.Auto_New_World or _G.TeleportIsland or _G.Auto_Third_World or _G.shinapo or _G.rangnanh or _G.chatpong or _G.thuocsung or _G.sungtegiac or _G.Auto_Farm_Chest or _G.duoica or  _G.Auto_Farm_Boss or _G.SeaBeasts1 or _G.vayrong  or _G.tocquy or _G.Auto_Elite_Hunter or _G.AutoFarmKenHaki or _G.AutoFactory or _G.AutoFarmSelectMonster or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.d or _G.Auto_Rengoku or _G.Autotushita or _G.Auto_Farm_Radioactive   or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Cacao or _G.canho or _G.magma or _G.Auto_Farm_Mini_Tusk or _G.nuocmat or  _G.Auto_Farm_Bone or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.AutoFarmMaterial or _G.autoraid or _G.Auto_Twin_Hook or AutoNextIsland or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.AutoObservationHakiV2 or _G.d or _G.Auto_Next_Island or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.Auto_Kill_Law or _G.Caca or _G.bjirFishCrewBoat then
 
 
 
@@ -19142,7 +18738,7 @@ local Weapon = Library:Tab("Weapons","rbxassetid://11446859498")
 
 
 
-local ca = Library:Tab("Kitsune Sea Event","rbxassetid://11446859498")
+local ca = Library:Tab("Sea Event","rbxassetid://11446859498")
 
 
 
@@ -20315,7 +19911,7 @@ spawn(function()
 
 
 
-   MethodFarm = CFrame.new(0,0,_G.DistanceMob)
+   MethodFarm = CFrame.new(0,_G.DistanceMob,0)
 
 
 
@@ -20376,6 +19972,900 @@ Setting:Slider1("Farm Distance",1,100,25,function(value)
 end
 
 
+
+ 
+local AttackList = {"Slow", "Normal", "Pro"}
+
+
+
+	_G.FastAttackDelay = "Normal"
+
+
+Setting:Dropdown("Fast Attack Delay", AttackList,function(MakoGay)
+
+    _G.FastAttackDelay = MakoGay
+
+end)
+
+spawn(function()
+
+    while wait(.1) do
+
+        if _G.FastAttackDelay then
+
+            pcall(function()
+
+                  if _G.FastAttackDelay == "Slow" then
+
+
+
+	                    _G.FastAttackDelay = 0.2
+
+
+
+	                elseif _G.FastAttackDelay == "Default" then
+
+
+
+	                    _G.FastAttackDelay = 0.5
+
+
+
+	                elseif _G.FastAttackDelay == "Normal" then
+
+
+
+	                    _G.FastAttackDelay = 0.2
+
+
+
+	                elseif _G.FastAttackDelay == "Pro" then
+
+
+
+	                    _G.FastAttackDelay = 0
+
+                end
+
+            end)
+
+        end
+
+    end
+
+end)
+
+
+
+spawn(function()
+
+
+
+	while true do
+
+
+
+	if _G.FastAttack then
+
+
+
+	pcall(function()
+
+
+
+	CameraShakerR:Stop()
+
+
+
+	CombatFramework.activeController.attacking = false
+
+
+
+	CombatFramework.activeController.timeToNextAttack = 0
+
+
+
+	CombatFramework.activeController.increment = 3
+
+
+
+	CombatFramework.activeController.hitboxMagnitude = 100
+
+
+
+	CombatFramework.activeController.blocking = false
+
+
+
+	CombatFramework.activeController.timeToNextBlock = 0
+
+
+
+	CombatFramework.activeController.focusStart = 0
+
+
+
+	CombatFramework.activeController.humanoid.AutoRotate = true
+
+
+
+	end)
+
+
+
+	end
+
+
+
+	task.wait()
+
+
+
+	end
+
+
+
+	end)
+
+
+
+	
+
+
+
+	
+
+
+
+	
+
+
+
+	
+
+
+
+	
+
+
+
+	
+
+
+
+	--// Module
+
+
+
+	function GetBladeHit()
+
+
+
+	    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
+
+
+
+	    local CmrFwLib = CombatFrameworkLib[2]
+
+
+
+	    local p13 = CmrFwLib.activeController
+
+
+
+	    local weapon = p13.blades[1]
+
+
+
+	    if not weapon then 
+
+
+
+	        return weapon
+
+
+
+	    end
+
+
+
+	    while weapon.Parent ~= game.Players.LocalPlayer.Character do
+
+
+
+	        weapon = weapon.Parent 
+
+
+
+	    end
+
+
+
+	    return weapon
+
+
+
+	end
+
+
+
+	function AttackHit()
+
+
+
+	    local CombatFrameworkLib = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))
+
+
+
+	    local CmrFwLib = CombatFrameworkLib[2]
+
+
+
+	    local plr = game.Players.LocalPlayer
+
+
+
+	    for i = 1, 1 do
+
+
+
+	        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(plr.Character,{plr.Character.HumanoidRootPart},60)
+
+
+
+	        local cac = {}
+
+
+
+	        local hash = {}
+
+
+
+	        for k, v in pairs(bladehit) do
+
+
+
+	            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+
+
+
+	                table.insert(cac, v.Parent.HumanoidRootPart)
+
+
+
+	                hash[v.Parent] = true
+
+
+
+	            end
+
+
+
+	        end
+
+
+
+	        bladehit = cac
+
+
+
+	        if #bladehit > 0 then
+
+
+
+	            pcall(function()
+
+
+
+	                CmrFwLib.activeController.timeToNextAttack = 1
+
+
+
+	                CmrFwLib.activeController.attacking = false
+
+
+
+	                CmrFwLib.activeController.blocking = false
+
+
+
+	                CmrFwLib.activeController.timeToNextBlock = 0
+
+
+
+	                CmrFwLib.activeController.increment = 3
+
+
+
+	                CmrFwLib.activeController.hitboxMagnitude = 100
+
+
+
+	                CmrFwLib.activeController.focusStart = 0
+
+
+
+	                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetBladeHit()))
+
+
+
+	                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
+
+
+
+	            end)
+
+
+
+	        end
+
+
+
+	    end
+
+
+
+	end
+
+
+
+	spawn(function()
+
+
+
+	    while wait(.1) do
+
+
+
+	        if _G.FastAttack then
+
+
+
+	            pcall(function()
+
+
+
+	                repeat task.wait(_G.FastAttackDelay)
+
+
+
+	                    AttackHit()
+
+
+
+	                until not _G.FastAttack
+
+
+
+	            end)
+
+
+
+	        end
+
+
+
+	    end
+
+
+
+	end)
+	
+	Setting:Toggle("Fast Attack",true,function(value)
+
+
+
+ _G.FastAttack = value
+
+
+
+ end)
+ 
+ 
+Setting:Toggle("Fast Attack [Lag]",false,function(value)
+
+ _G.FastAttack = value
+
+end)
+
+
+
+-- [[ Fast Attack Fixed / Shadow Hub / Dont edit , or ur will be messed up! ]]
+
+
+
+-- [[ Properties ]]
+
+
+
+require(game.ReplicatedStorage.Util.CameraShaker):Stop()
+
+
+
+xShadowFastAttackx = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+
+
+
+xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
+
+
+
+spawn(function()
+
+    game:GetService("RunService").RenderStepped:Connect(function()
+
+        if _G.FastAttack then
+
+            if typeof(xShadowx) == "table" then
+
+                pcall(function()
+
+                    xShadowx.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
+
+                    xShadowx.activeController.timeToNextAttack = 0
+
+                    xShadowx.activeController.hitboxMagnitude = 200
+
+                    xShadowx.activeController.active = false
+
+                    xShadowx.activeController.timeToNextBlock = 0
+
+                    xShadowx.activeController.focusStart = 0
+
+                    xShadowx.activeController.increment = 4
+
+                    xShadowx.activeController.blocking = false
+
+                    xShadowx.activeController.attacking = false
+
+                    xShadowx.activeController.humanoid.AutoRotate = 50
+
+                end)
+
+            end
+
+        end
+
+    end)
+
+end)
+ 
+ Setting:Toggle("Slow Attack",false,function(value)
+
+
+
+ _G.FastAttack1 = value
+
+
+
+ if value then
+
+
+
+     Attack1Function()
+
+
+
+     end
+
+
+
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+require(game.ReplicatedStorage.Util.CameraShaker):Stop()
+
+
+
+
+
+
+
+xShadowFastAttackx = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+
+
+
+
+
+
+
+xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
+
+
+
+
+
+
+
+spawn(function()
+
+
+
+    game:GetService("RunService").RenderStepped:Connect(function()
+
+
+
+        if _G.FastAttack then
+
+
+
+            if typeof(xShadowx) == "table" then
+
+
+
+                pcall(function()
+
+
+
+                    xShadowx.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
+
+
+
+                    xShadowx.activeController.timeToNextAttack = 0
+
+
+
+                    xShadowx.activeController.hitboxMagnitude = 200
+
+
+
+                    xShadowx.activeController.active = false
+
+
+
+                    xShadowx.activeController.timeToNextBlock = 0
+
+
+
+                    xShadowx.activeController.focusStart = 0
+
+
+
+                    xShadowx.activeController.increment = 4
+
+
+
+                    xShadowx.activeController.blocking = false
+
+
+
+                    xShadowx.activeController.attacking = false
+
+
+
+                    xShadowx.activeController.humanoid.AutoRotate = 50
+
+
+
+                end)
+
+
+
+            end
+
+
+
+        end
+
+
+
+    end)
+
+
+
+end)
+
+Setting:Toggle("Click in 0 Seg",nil,function(value)
+
+
+
+    local SuperFastMode1 = value -- เปลี่ยนเป็นจริงถ้าคุณต้องการโจมตี Super Super Super Fast (เช่นการฆ่าทันที) แต่จะทำให้เกมเตะคุณมากกว่าโหมดปกติ
+
+
+
+             _G.aothatday1 = value
+
+
+
+
+
+
+
+
+
+
+
+local plr = game.Players.LocalPlayer
+
+
+
+
+
+
+
+local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
+
+
+
+local CbFw2 = CbFw[2]
+
+
+
+
+
+
+
+function GetCurrentBlade() 
+
+
+
+    local p13 = CbFw2.activeController
+
+
+
+    local ret = p13.blades[1]
+
+
+
+    if not ret then return end
+
+
+
+    while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
+
+
+
+    return ret
+
+
+
+end
+
+
+
+function AttackNoCD() 
+
+
+
+    local AC = CbFw2.activeController
+
+
+
+    for i = 1, 1 do 
+
+
+
+        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+
+
+
+            plr.Character,
+
+
+
+            {plr.Character.HumanoidRootPart},
+
+
+
+            60
+
+
+
+        )
+
+
+
+        local cac = {}
+
+
+
+        local hash = {}
+
+
+
+        for k, v in pairs(bladehit) do
+
+
+
+            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+
+
+
+                table.insert(cac, v.Parent.HumanoidRootPart)
+
+
+
+                hash[v.Parent] = true
+
+
+
+            end
+
+
+
+        end
+
+
+
+        bladehit = cac
+
+
+
+        if #bladehit > 0 then
+
+
+
+            local u8 = debug.getupvalue(AC.attack, 5)
+
+
+
+            local u9 = debug.getupvalue(AC.attack, 6)
+
+
+
+            local u7 = debug.getupvalue(AC.attack, 4)
+
+
+
+            local u10 = debug.getupvalue(AC.attack, 7)
+
+
+
+            local u12 = (u8 * 798405 + u7 * 727595) % u9
+
+
+
+            local u13 = u7 * 798405
+
+
+
+            (function()
+
+
+
+                u12 = (u12 * u9 + u13) % 1099511627776
+
+
+
+                u8 = math.floor(u12 / u9)
+
+
+
+                u7 = u12 - u8 * u9
+
+
+
+            end)()
+
+
+
+            u10 = u10 + 1
+
+
+
+            debug.setupvalue(AC.attack, 5, u8)
+
+
+
+            debug.setupvalue(AC.attack, 6, u9)
+
+
+
+            debug.setupvalue(AC.attack, 4, u7)
+
+
+
+            debug.setupvalue(AC.attack, 7, u10)
+
+
+
+            pcall(function()
+
+
+
+                for k, v in pairs(AC.animator.anims.basic) do
+
+
+
+                    v:Play()
+
+
+
+                end                  
+
+
+
+            end)
+
+
+
+            if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then 
+
+
+
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
+
+
+
+                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
+
+
+
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "") 
+
+
+
+            end
+
+
+
+        end
+
+
+
+    end
+
+
+
+end
+
+
+
+local cac
+
+
+
+if SuperFastMode1 then 
+
+
+
+	cac=task.wait
+
+
+
+else
+
+
+
+	cac=wait
+
+
+
+end
+
+
+
+while cac() do 
+
+
+
+	AttackNoCD()
+
+
+
+end
+
+
+
+
+
+
+
+end)
+
 function CheckAntiCheatBypass()
     for i, v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
         if v:IsA("LocalScript") then
@@ -20411,7 +20901,7 @@ Setting:Toggle("Anti Ban",true,function(value)
 
 
 
- _G.A = value
+ _G.Aa = value
 
 
 
@@ -20429,7 +20919,7 @@ spawn(function()
 
 
 
-  if _G.A then
+  if _G.Aa then
 
 
 
@@ -20452,7 +20942,6 @@ CheckAntiCheatBypass()
  end)
  
  
-
 Setting:Toggle("Auto Set Spawn Points",true,function(value)
 
 
@@ -21444,77 +21933,6 @@ end)
 
 
 
-Setting:Toggle("Fast Attack [Lag]",false,function(value)
-
- _G.FastAttack = value
-
-end)
-
-
-
--- [[ Fast Attack Fixed / Shadow Hub / Dont edit , or ur will be messed up! ]]
-
-
-
--- [[ Properties ]]
-
-
-
-require(game.ReplicatedStorage.Util.CameraShaker):Stop()
-
-
-
-xShadowFastAttackx = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-
-
-
-xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
-
-
-
-spawn(function()
-
-    game:GetService("RunService").RenderStepped:Connect(function()
-
-        if _G.FastAttack then
-
-            if typeof(xShadowx) == "table" then
-
-                pcall(function()
-
-                    xShadowx.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
-
-                    xShadowx.activeController.timeToNextAttack = 0
-
-                    xShadowx.activeController.hitboxMagnitude = 200
-
-                    xShadowx.activeController.active = false
-
-                    xShadowx.activeController.timeToNextBlock = 0
-
-                    xShadowx.activeController.focusStart = 0
-
-                    xShadowx.activeController.increment = 4
-
-                    xShadowx.activeController.blocking = false
-
-                    xShadowx.activeController.attacking = false
-
-                    xShadowx.activeController.humanoid.AutoRotate = 50
-
-                end)
-
-            end
-
-        end
-
-    end)
-
-end)
-
-
-
-
 
 Setting:Toggle("Auto Ken Haki",true,function(vu)
 
@@ -21614,143 +22032,7 @@ spawn(function()
 
 
 
-Setting:Toggle("Slow Attack",false,function(value)
 
-
-
- _G.FastAttack1 = value
-
-
-
- if value then
-
-
-
-     Attack1Function()
-
-
-
-     end
-
-
-
-end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-require(game.ReplicatedStorage.Util.CameraShaker):Stop()
-
-
-
-
-
-
-
-xShadowFastAttackx = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-
-
-
-
-
-
-
-xShadowx = debug.getupvalues(xShadowFastAttackx)[2]
-
-
-
-
-
-
-
-spawn(function()
-
-
-
-    game:GetService("RunService").RenderStepped:Connect(function()
-
-
-
-        if _G.FastAttack then
-
-
-
-            if typeof(xShadowx) == "table" then
-
-
-
-                pcall(function()
-
-
-
-                    xShadowx.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
-
-
-
-                    xShadowx.activeController.timeToNextAttack = 0
-
-
-
-                    xShadowx.activeController.hitboxMagnitude = 200
-
-
-
-                    xShadowx.activeController.active = false
-
-
-
-                    xShadowx.activeController.timeToNextBlock = 0
-
-
-
-                    xShadowx.activeController.focusStart = 0
-
-
-
-                    xShadowx.activeController.increment = 4
-
-
-
-                    xShadowx.activeController.blocking = false
-
-
-
-                    xShadowx.activeController.attacking = false
-
-
-
-                    xShadowx.activeController.humanoid.AutoRotate = 50
-
-
-
-                end)
-
-
-
-            end
-
-
-
-        end
-
-
-
-    end)
-
-
-
-end)
 
 
 
@@ -22116,6 +22398,11 @@ ca:Button("Go to Zone 6",function()
     topos(CFrame.new(-47335.4609375, 8.1976900100708, -13788.5126953125))
 end)
 
+ca:Button("Go to Zone 5",function()
+
+    topos(CFrame.new(-41667.56640625, 0.0031574948225170374, -12310.185546875))
+end)
+
 ca:Seperator(" Sea Event BETA ")
 
 spawn(function()
@@ -22133,7 +22420,7 @@ end)
 
 FrozenIsland = ca:Label("")
 
-ca:Toggle('Teleport to Frozen Dimension', false, function(value)
+ca:Toggle('Auto Teleport to Frozen Dimension', false, function(value)
 _G.BjirFrozenCuy = value
 StopTween(_G.BjirFrozenCuy) 
 end)
@@ -22794,7 +23081,7 @@ spawn(function()
 end)
 
 ca:Label("Buy Pirate Brigade First")
-    ca:Toggle("Auto Sail",_G.BiirTrax,function(state)
+    ca:Toggle("Auto Sail And Kill Enemies",_G.BiirTrax,function(state)
     if state then
         _G.BiirTrax = true
     else
@@ -22866,9 +23153,7 @@ spawn(function()
                     {name = "Terrorshark", variable = "bjirTerrorshark"},
                     {name = "Shark", variable = "bjirShark"},
                     {name = "Piranha", variable = "bjirPiranha"},
-                    {name = "FishBoat", variable = "bjirFishBoat"}, 
                     {name = "Fish Crew Member", variable = "bjirFishCrewBoat"}, 
-                    {name = "PirateGrandBrigade", "PirateBrigade", variable = "KillGhostShip"}, 
 
                 }
 
@@ -22958,6 +23243,40 @@ spawn(function()
             end
         end)
     end
+end)
+
+ca:Button("Tween to Frozen Dimension",function()
+
+          if game:GetService("Workspace").Map:FindFirstChild("Frozen Dimension") then
+
+
+
+                function toTargetWait(a)local b=(a.p-game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude;tweenrach=game:GetService('TweenService'):Create(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"),TweenInfo.new(b/310,Enum.EasingStyle.Linear),{CFrame=a})tweenrach:Play()end;toTargetWait(workspace._WorldOrigin.Locations:FindFirstChild("Frozen Dimension").CFrame*CFrame.new(0,250,0))
+
+
+
+                else
+
+
+
+game.StarterGui:SetCore("SendNotification", {
+
+
+
+        Title = "Omg Hub"; -- the title (ofc)
+
+
+
+        Text = "Frozwn Dimension not Found!"; -- what the text says (ofc)
+
+
+
+        Duration = 3; -- how long the notification should in secounds
+
+
+
+        }) end
+
 end)
 
 
@@ -23368,336 +23687,6 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Setting:Toggle("Click in 0 Seg",nil,function(value)
-
-
-
-    local SuperFastMode1 = value -- เปลี่ยนเป็นจริงถ้าคุณต้องการโจมตี Super Super Super Fast (เช่นการฆ่าทันที) แต่จะทำให้เกมเตะคุณมากกว่าโหมดปกติ
-
-
-
-             _G.aothatday1 = value
-
-
-
-
-
-
-
-
-
-
-
-local plr = game.Players.LocalPlayer
-
-
-
-
-
-
-
-local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
-
-
-
-local CbFw2 = CbFw[2]
-
-
-
-
-
-
-
-function GetCurrentBlade() 
-
-
-
-    local p13 = CbFw2.activeController
-
-
-
-    local ret = p13.blades[1]
-
-
-
-    if not ret then return end
-
-
-
-    while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
-
-
-
-    return ret
-
-
-
-end
-
-
-
-function AttackNoCD() 
-
-
-
-    local AC = CbFw2.activeController
-
-
-
-    for i = 1, 1 do 
-
-
-
-        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
-
-
-
-            plr.Character,
-
-
-
-            {plr.Character.HumanoidRootPart},
-
-
-
-            60
-
-
-
-        )
-
-
-
-        local cac = {}
-
-
-
-        local hash = {}
-
-
-
-        for k, v in pairs(bladehit) do
-
-
-
-            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
-
-
-
-                table.insert(cac, v.Parent.HumanoidRootPart)
-
-
-
-                hash[v.Parent] = true
-
-
-
-            end
-
-
-
-        end
-
-
-
-        bladehit = cac
-
-
-
-        if #bladehit > 0 then
-
-
-
-            local u8 = debug.getupvalue(AC.attack, 5)
-
-
-
-            local u9 = debug.getupvalue(AC.attack, 6)
-
-
-
-            local u7 = debug.getupvalue(AC.attack, 4)
-
-
-
-            local u10 = debug.getupvalue(AC.attack, 7)
-
-
-
-            local u12 = (u8 * 798405 + u7 * 727595) % u9
-
-
-
-            local u13 = u7 * 798405
-
-
-
-            (function()
-
-
-
-                u12 = (u12 * u9 + u13) % 1099511627776
-
-
-
-                u8 = math.floor(u12 / u9)
-
-
-
-                u7 = u12 - u8 * u9
-
-
-
-            end)()
-
-
-
-            u10 = u10 + 1
-
-
-
-            debug.setupvalue(AC.attack, 5, u8)
-
-
-
-            debug.setupvalue(AC.attack, 6, u9)
-
-
-
-            debug.setupvalue(AC.attack, 4, u7)
-
-
-
-            debug.setupvalue(AC.attack, 7, u10)
-
-
-
-            pcall(function()
-
-
-
-                for k, v in pairs(AC.animator.anims.basic) do
-
-
-
-                    v:Play()
-
-
-
-                end                  
-
-
-
-            end)
-
-
-
-            if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then 
-
-
-
-                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade()))
-
-
-
-                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
-
-
-
-                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "") 
-
-
-
-            end
-
-
-
-        end
-
-
-
-    end
-
-
-
-end
-
-
-
-local cac
-
-
-
-if SuperFastMode1 then 
-
-
-
-	cac=task.wait
-
-
-
-else
-
-
-
-	cac=wait
-
-
-
-end
-
-
-
-while cac() do 
-
-
-
-	AttackNoCD()
-
-
-
-end
-
-
-
-
-
-
-
-end)
-
-
-
-
-
-
-
-
-
-
-
-Setting:Toggle("Fast Attack",true,function(value)
-
-
-
- _G.FastAttack = value
-
-
-
- end)
 
 
 
@@ -29307,7 +29296,76 @@ spawn(function()
  if World1 or World2 then
  Main:Label("Use Auto Farm Level For Farm Candy")
  end
+ 
+ if World1 then
+ Main:Toggle("Auto Teleport to Green Part",AutoKialt,function(W)
+    AutoKialt = W
+    end)
+    spawn(function()
+    while wait() do
+		pcall(function()
+			if AutoKialt then
+		topos(CFrame.new(992.6138916015625, 14.651528358459473, -3729.4755859375))
+			end
+		end)
+    end
+    end)
+    end
+ 
+ if World2 then
+ Main:Toggle("Auto Teleport to Green Part",AutoKilt,function(W)
+    AutoKilt = W
+    end)
+    spawn(function()
+    while wait() do
+		pcall(function()
+			if AutoKilt then
+		topos(CFrame.new(-5242.82080078125, 14.651528358459473, 1529.7296142578125))
+			end
+		end)
+    end
+    end)
+    end
+ 
+ if World3 then
+ Main:Toggle("Auto Teleport to Green Part",AutoKiit,function(W)
+    AutoKiit = W
+    end)
+    spawn(function()
+    while wait() do
+		pcall(function()
+			if AutoKiit then
+				topos(CFrame.new(-1073.133056640625, 14.142411231994629, -14429.6669921875))
+			end
+		end)
+    end
+    end)
+    end
+    
+    
 	
+	Main:Toggle("Auto Teleport to Gift", false, function(vu)
+    AutopBuyEaXPBone = vu
+end)
+
+spawn(function()
+    pcall(function()
+        while wait() do
+            if AutopBuyEaXPBone then
+                for i,v in pairs(game:GetService("Workspace")._WorldOrigin:WaitForChild("Present"):GetDescendants()) do
+            if v.Name == 'Box' then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,5,0)
+            end
+            end
+for i, v in pairs(game:GetService("Workspace")._WorldOrigin:WaitForChild("Present").Box:GetDescendants()) do
+               if v:FindFirstChild("ProximityPrompt") then
+                fireproximityprompt(v.ProximityPrompt)
+                    end
+                end
+            end
+        end
+    end)
+end)
 
 Main:Toggle("Auto Buy Sleigh [ Candies ]", false, function(vu)
     AutopBuyEXPBone = vu
@@ -29563,6 +29621,30 @@ spawn(function()
 
 
 
+ end)
+ 
+ Main:Toggle("Auto TryLuck",false,function(value)
+ _G.Auto_TryLuck = value
+ end)
+
+spawn(function()
+ while wait(.1) do
+ if _G.Auto_TryLuck then
+ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("gravestoneEvent",1)
+ end
+ end
+ end)
+ 
+ Main:Toggle("Auto Pray",false,function(value)
+ _G.Auto_Pray = value
+ end)
+
+spawn(function()
+ while wait(.1) do
+ if _G.Auto_Pray then
+ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("gravestoneEvent",2)
+ end
+ end
  end)
 end
 
@@ -37949,25 +38031,6 @@ spawn(function()
 
 end)
 
-local ObservationRange = Weapon:Label("")
-
-    
-
-    spawn(function()
-
-        while wait() do
-
-            pcall(function()
-
-                ObservationRange:Set("Observation Range Level : "..math.floor(game:GetService("Players").LocalPlayer.VisionRadius.Value))
-
-            end)
-
-        end
-
-    end)
-
-
 
 
 Weapon:Toggle("Auto Observation V2",_G.AutoObservationHakiV2,function(x)
@@ -40837,10 +40900,14 @@ Race:Toggle("Auto Drive",AutoW,function(W)
 
 
 
-
-Race:Toggle("Auto Teleport to Mirage Island",false,function(value)
-
-       if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+Race:Toggle("Auto Teleport to Mirage Island",AutoKkait,function(W)
+    AutoKkait = W
+    end)
+    spawn(function()
+    while wait() do
+		pcall(function()
+			if AutoKkait then
+				   if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
 
                 function toTargetWait(a)local b=(a.p-game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude;tweenrach=game:GetService('TweenService'):Create(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"),TweenInfo.new(b/310,Enum.EasingStyle.Linear),{CFrame=a})tweenrach:Play()end;toTargetWait(workspace.Map.MysticIsland.PrimaryPart.CFrame*CFrame.new(0,250,0))
 
@@ -40855,8 +40922,10 @@ game.StarterGui:SetCore("SendNotification", {
         Duration = 3; -- how long the notification should in secounds
 
         }) end
-
-end)
+			end
+		end)
+    end
+    end)
 
 
 
@@ -43654,15 +43723,15 @@ P:Toggle("Teleport Player Bypass",false,function(bool)
 
 
 
-                                    _G.Teleport = bool
+                                    _G.Teleport_to_Player = bool
 
 
 
-                                    if _G.Teleport == false then
+                                    if _G.Teleport_to_Player == false then
 
 
 
-                                        game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
+                                        game.Players:FindFirstChild(_G.Select_Player).Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
 
 
 
@@ -43670,15 +43739,15 @@ P:Toggle("Teleport Player Bypass",false,function(bool)
 
 
 
-                                    while _G.Teleport do task.wait()
+                                    while _G.Teleport_to_Player do task.wait()
 
 
 
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0)
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(_G.Select_Player).Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0)
 
 
 
-                                        game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                        game.Players:FindFirstChild(_G.Select_Player).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
 
 
 
@@ -43738,15 +43807,15 @@ P:Toggle("Teleport Player Bypass",false,function(bool)
 
 
 
-                    if _G.SelectPly ~= nil then 
+                    if _G.Select_Player ~= nil then 
 
 
 
-                        if game.Players:FindFirstChild(_G.SelectPly) then
+                        if game.Players:FindFirstChild(_G.Select_Player) then
 
 
 
-                            if game.Players:FindFirstChild(_G.SelectPly).Character.Humanoid.Health > 0 then
+                            if game.Players:FindFirstChild(_G.Select_Player).Character.Humanoid.Health > 0 then
 
 
 
@@ -43762,11 +43831,11 @@ P:Toggle("Teleport Player Bypass",false,function(bool)
 
 
 
-                                    game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CanCollide = false
+                                    game.Players:FindFirstChild(_G.Select_Player).Character.HumanoidRootPart.CanCollide = false
 
 
 
-                                    topos(game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
+                                    topos(game.Players:FindFirstChild(_G.Select_Player).Character.HumanoidRootPart.CFrame * CFrame.new(0,5,0))
 
 
 
@@ -43786,11 +43855,11 @@ P:Toggle("Teleport Player Bypass",false,function(bool)
 
 
 
-                                                    [1] = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.Position,
+                                                    [1] = game.Players:FindFirstChild(_G.Select_Player).Character.HumanoidRootPart.Position,
 
 
 
-                                                    [2] = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart
+                                                    [2] = game.Players:FindFirstChild(_G.Select_Player).Character.HumanoidRootPart
 
 
 
@@ -43882,7 +43951,7 @@ P:Toggle("Teleport Player Bypass",false,function(bool)
 
 
 
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[_G.SelectPly].Character.HumanoidRootPart.CFrame	
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[_G.Select_Player].Character.HumanoidRootPart.CFrame	
 
 
 
@@ -45460,7 +45529,7 @@ end)
 
 
 
-                                    EquipWeapon(SelectWeaponGun)
+                                    EquipWeapon(_G.Select_Weapon)
 
 
 
@@ -45544,7 +45613,7 @@ end)
 
 
 
-                                            game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
+                                            game:GetService("Players").LocalPlayer.Character[_G.Select_Weapon].RemoteFunctionShoot:InvokeServer(unpack(args))
 
 
 
