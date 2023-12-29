@@ -16374,7 +16374,7 @@ spawn(function()
 
 
 
-		  	if _G.Auto_Farm_Level or _G.Auto_New_World or _G.AutoFarmFruitMastery or _G.thuocsung or _G.sungtegiac or _G.shinapo or _G.chatpong or _G.rangnanh or  _G.magma or _G.Auto_Third_World or _G.duoica or _G.tocquy or _G.TeleportIsland or _G.SeaBeasts1 or _G.vayrong or _G.Auto_Farm_Boss or _G.Autotushita or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper  or _G.Auto_Farm_Bone or _G.canho or _G.Cacao  or _G.nuocmat or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.d or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.AutoFarmMaterial or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.autoraid or AutoNextIsland or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.AutoFarmSelectMonster or _G.AutoFarmKenHakivor or _G.AutoObservationHakiV2  or _G.AutoFactory or _G.Auto_Kill_Law or _G.Caca or _G.bjirFishCrewBoat then
+		  	if _G.Auto_Farm_Level or _G.Auto_New_World or _G.AutoFarmFruitMastery or _G.thuocsung or _G.sungtegiac or _G.shinapo or _G.chatpong or _G.rangnanh or  _G.magma or _G.Auto_Third_World or _G.duoica or _G.tocquy or _G.TeleportIsland or _G.SeaBeasts1 or _G.vayrong or _G.Auto_Farm_Boss or _G.Autotushita or _G.Auto_Elite_Hunter or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Farm_Angel_Wing or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.Auto_Rengoku or _G.Auto_Farm_Radioactive or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper  or _G.Auto_Farm_Bone or _G.canho or _G.Cacao  or _G.nuocmat or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.d or _G.Auto_Twin_Hook or _G.Auto_Serpent_Bow or _G.AutoFarmMaterial or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.Auto_Next_Island or _G.autoraid or AutoNextIsland or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.AutoFarmSelectMonster or _G.AutoFarmKenHakivor or _G.AutoObservationHakiV2  or _G.AutoFactory or _G.Auto_Kill_Law or _G.Caca or _G.bjirFishCrewBoat or _G.AutoSeaBest then
 
 
 
@@ -16454,7 +16454,7 @@ spawn(function()
 
 
 
-			if _G.Auto_Farm_Level or _G.Auto_New_World or _G.TeleportIsland or _G.Auto_Third_World or _G.shinapo or _G.rangnanh or _G.chatpong or _G.thuocsung or _G.sungtegiac or _G.Auto_Farm_Chest or _G.duoica or  _G.Auto_Farm_Boss or _G.SeaBeasts1 or _G.vayrong  or _G.tocquy or _G.Auto_Elite_Hunter or _G.AutoFarmKenHaki or _G.AutoFactory or _G.AutoFarmSelectMonster or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.d or _G.Auto_Rengoku or _G.Autotushita or _G.Auto_Farm_Radioactive   or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Cacao or _G.canho or _G.magma or _G.Auto_Farm_Mini_Tusk or _G.nuocmat or  _G.Auto_Farm_Bone or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.AutoFarmMaterial or _G.autoraid or _G.Auto_Twin_Hook or AutoNextIsland or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.AutoObservationHakiV2 or _G.d or _G.Auto_Next_Island or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.Auto_Kill_Law or _G.Caca or _G.bjirFishCrewBoat then
+			if _G.Auto_Farm_Level or _G.Auto_New_World or _G.TeleportIsland or _G.Auto_Third_World or _G.shinapo or _G.rangnanh or _G.chatpong or _G.thuocsung or _G.sungtegiac or _G.Auto_Farm_Chest or _G.duoica or  _G.Auto_Farm_Boss or _G.SeaBeasts1 or _G.vayrong  or _G.tocquy or _G.Auto_Elite_Hunter or _G.AutoFarmKenHaki or _G.AutoFactory or _G.AutoFarmSelectMonster or _G.Auto_Cake_Prince or _G.Auto_Farm_All_Boss or _G.Auto_Saber or _G.Auto_Pole  or _G.Auto_Factory_Farm or _G.Auto_Farm_Ectoplasm or _G.mudautr or _G.d or _G.Auto_Rengoku or _G.Autotushita or _G.Auto_Farm_Radioactive   or _G.Auto_Evo_Race_V2 or _G.Auto_Swan_Glasses or _G.Auto_Dragon_Trident or _G.Auto_Soul_Reaper or _G.Auto_Farm_Fish_Tail or _G.Cacao or _G.canho or _G.magma or _G.Auto_Farm_Mini_Tusk or _G.nuocmat or  _G.Auto_Farm_Bone or _G.Auto_Open_Dough_Dungeon or _G.Auto_Rainbow_Haki or _G.Auto_Musketeer_Hat or _G.Auto_Holy_Torch or _G.Auto_Canvander or _G.AutoFarmMaterial or _G.autoraid or _G.Auto_Twin_Hook or AutoNextIsland or _G.Auto_Serpent_Bow or _G.Auto_Fully_Death_Step or _G.Auto_Fully_SharkMan_Karate or _G.Teleport_to_Player or _G.Auto_Kill_Player_Melee or _G.Auto_Kill_Player_Gun or _G.Start_Tween_Island or _G.AutoObservationHakiV2 or _G.d or _G.Auto_Next_Island or _G.Auto_Farm_Sword or _G.MeleeFarm or _G.Auto_Kill_Law or _G.Caca or _G.bjirFishCrewBoat or _G.AutoSeaBest then
 
 
 
@@ -22465,7 +22465,7 @@ game.StarterGui:SetCore("SendNotification", {
 
 ca:Toggle('Auto Kill Sea Beast', false, function(value)
     _G.AutoSeaBest = value
-    StopTween(_G.AutoFarmSeabaest)
+    StopTween(_G.AutoSeaBest)
     end)
     
     spawn(function()
@@ -22473,7 +22473,7 @@ ca:Toggle('Auto Kill Sea Beast', false, function(value)
             if _G.AutoSeaBest then
                    pcall(function()                   
 					for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
-						if v:FindFirstChild("HumanoidRootPart") then
+  if v:FindFirstChild("HumanoidRootPart") then
 						    AutoHaki()
 							topos(v.HumanoidRootPart.CFrame * CFrame.new(1,450,45))
 							game:GetService("VirtualUser"):CaptureController()
@@ -22743,7 +22743,7 @@ spawn(function()
                                         topos(v.HumanoidRootPart.CFrame * CFrame.new(2,60,2))
                                         game:GetService("VirtualUser"):CaptureController()
                                         game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                    until not _G.bjirPiranha or not v.Parent or v.Humanoid.Health <= 0
+                                    until not _G.bjirFishCrewBoat or not v.Parent or v.Humanoid.Health <= 0
                                     MakoriGayMag = false
                                 end
                             end
@@ -23093,7 +23093,7 @@ if _G.BiirTrax then
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16921.853515625, 9.0863618850708, 433.9601135253906)
 
-wait(0.5) 
+
 
 local args = {
     [1] = "BuyBoat",
@@ -58342,7 +58342,7 @@ end)
 
 
 
-DevilFruit:Toggle("Esp Mystic Island", false, function(value)
+DevilFruit:Toggle("Esp Mirage Island", false, function(value)
 
 
 
